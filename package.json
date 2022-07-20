@@ -1,0 +1,23 @@
+{
+  "name": "worldboss-api",
+  "version": "1.0.0",
+  "description": "A source for people who want to invest in our planet and a sustainable future.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waddal/WorldBoss-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waddal/WorldBoss-API/issues"
+  },
+  "homepage": "https://github.com/waddal/WorldBoss-API#readme",
+  "devDependencies": {
+    "eslint": "^8.20.0"
+  }
+}
