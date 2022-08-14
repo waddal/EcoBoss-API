@@ -12,21 +12,6 @@ export const activities = [
     link: "#",
   },
 ];
-// Mock Activity 2
-export const activities2 = [
-  {
-    activity: "Compost your organic waste",
-    accessability: "Few to no challenges",
-    availability: 0.25,
-    duration: "minutes",
-    goal: 1-17,
-    kidFriendly: true,
-    link: "#",
-    participants: 2,
-    region: "Asia",
-    theme: "Biodiversity",
-  },
-];
 
 // IUCN Themes
 export const themes = [
@@ -38,7 +23,7 @@ export const themes = [
   `Nature-based Solutions`,
   `Ocean and coasts`,
   `Protected areas and land use`,
-  `Fight the new drug`
+  `Fight the new drug`,
 ];
 
 // UN Sustainable Development Goals
@@ -50,7 +35,7 @@ export const goals = [
   `Gender Equality`,
   `Clean Water and Sanitation`,
   `Affordable and Clean Energy`,
-  `Decent Work and Economic Growth`, 
+  `Decent Work and Economic Growth`,
   `Industry, Innovation and Infastructure`,
   `Reduce Inequalities`,
   `Sustainable Cities and Communities`,
@@ -60,4 +45,4 @@ export const goals = [
   `Life on Land`,
   `Peace, Justice and Strong Institutions`,
   `Partnerships`,
-]
+];

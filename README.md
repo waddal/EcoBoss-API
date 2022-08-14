@@ -1,12 +1,10 @@
 # WorldBoss-API
-
+[documentation]
 # What is this? 
-<!-- Awareness of NbS(Nature based solutions) is... crucial! -->
-The World Boss API is a source for people who want to take action and invest in our planet and a sustainable future.
+The World Boss API is a source for people who want to curb unsustainable lifestyle habits and fight for life. 
 
 # Why? 
 "We are determined to take the bold and transformative steps which are urgently needed to shift the world onto a sustainable and resilient path."
-
 
 ## Three Dimensions of Sustainable Development
    1. Economic

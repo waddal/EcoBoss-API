@@ -1,19 +1,23 @@
 const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
-const path = require("path");
+// const helmet = require("helmet");
+// const cors = require("cors");
+// const path = require("path");
 const dotenv = require("dotenv");
 const config_result = dotenv.config();
 if (process.env.NODE_ENV != "production" && config_result.error) {
   throw config_result.error;
 }
 
+const v1Router = require('./routes/v1/router');
+
 const server = express();
 
 server.use(express.json());
-server.use(express.static(path.join(__dirname, "client/build")));
-server.use(helmet());
-server.use(cors({ origin: "*" }));
+// server.use(express.static(path.join(__dirname, "client/build")));
+// server.use(helmet());
+// server.use(cors({ origin: "*" }));
+
+server.use('/v1', v1Router)
 
 // Catch
 server.get("*", (req, res) => {
