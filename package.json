@@ -10,10 +10,10 @@
     "rollback:dev": "npx knex --knexfile config/knexfile.js migrate:rollback",
     "seed:dev": "npx knex --knexfile config/knexfile.js seed:run",
     "update": "npx knex --knexfile config/knexfile.js migrate:rollback && npx knex --knexfile config/knexfile.js migrate:latest && npx knex --knexfile config/knexfile.js seed:run",
-    "migrate:prod": "heroku run knex --knexfile config/knexfile.js migrate:latest -a quizard-backend",
-    "rollback:prod": "heroku run knex --knexfile config/knexfile.js migrate:rollback -a quizard-backend",
-    "database:prod": "heroku pg:psql -a quizard-backend",
-    "seed:prod": "heroku run knex --knexfile config/knexfile.js seed:run -a quizard-backend"
+    "migrate:prod": "heroku run knex --knexfile config/knexfile.js migrate:latest -a [project name]",
+    "rollback:prod": "heroku run knex --knexfile config/knexfile.js migrate:rollback -a [project name]",
+    "database:prod": "heroku pg:psql -a [project name]",
+    "seed:prod": "heroku run knex --knexfile config/knexfile.js seed:run -a [project name]"
   },
   "repository": {
     "type": "git",

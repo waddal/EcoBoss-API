@@ -8,7 +8,7 @@ if (process.env.NODE_ENV != "production" && config_result.error) {
   throw config_result.error;
 }
 
-const v1Router = require('./routes/v1/router');
+const activitiesRouter = require('./routes/activities/router');
 
 const server = express();
 
@@ -17,7 +17,7 @@ server.use(express.json());
 // server.use(helmet());
 // server.use(cors({ origin: "*" }));
 
-server.use('/v1', v1Router)
+server.use('/activities', activitiesRouter)
 
 // Catch
 server.get("*", (req, res) => {

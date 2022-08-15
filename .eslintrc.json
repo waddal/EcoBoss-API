@@ -1,12 +1,15 @@
 {
-    "env": {
-        "node": true,
-        "commonjs": true,
-        "es2021": true
-    },
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "rules": {
-    }
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "semi": 1
+  }
 }
