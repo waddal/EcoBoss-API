@@ -16,7 +16,12 @@ exports.up = async function (knex) {
       table.integer('effectiveness').notNullable();
       table.string('requirements');
       table.string('link');
-      // table.foreign('boss_id').notNullable().references('boss_id').inTable('bosses');
+      table
+        .integer('boss_id')
+        .references('boss_id')
+        .inTable('bosses')
+        .onUpdate('RESTRICT')
+        .onDelete('RESTRICT');
     });
 };
 

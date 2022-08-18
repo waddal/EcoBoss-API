@@ -1,27 +1,36 @@
 const bosses = [
   {
-    title: 'Biodiversity',
-    description: 'discription',
+    title: 'Land',
+    description: 'rocky',
     status: 'Active',
-    health: 999,
+    health: 359,
     location: 'Region_id',
     requirement:
       'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
   },
   {
-    title: 'Climate Change',
-    description: 'discription',
+    title: 'Water',
+    description: 'wet',
     status: 'Active',
-    health: 999,
+    health: 851,
     location: 'Region_id',
     requirement:
       'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
   },
   {
-    title: 'Business, finance and economics',
-    description: 'discription',
+    title: 'Ocean',
+    description: 'salty',
     status: 'Active',
-    health: 999,
+    health: 407,
+    location: 'Region_id',
+    requirement:
+      'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
+  },
+  {
+    title: 'Climate',
+    description: 'whoosh',
+    status: 'Active',
+    health: 843,
     location: 'Region_id',
     requirement:
       'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
@@ -39,13 +48,14 @@ exports.seed = function (knex) {
 // const boss = {
 //   boss_id: uuid,
 //   title: 'Climate Change',
-//   status: 'Active',
+//   status: 'Active',.
 //   health: 259 /* how do we find accurate health? */,
 //   location: location_id,
 //   type: [type_id],
 //   requirement: 'level/occupation required to fight',
 //   equipment: 'equipment needed to fight',
 // };
+
 // const themes = [
 //   `Biodiversity`,
 //   `Business, finance and economics`,
