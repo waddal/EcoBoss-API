@@ -8,23 +8,10 @@ const PageWrapper = ({ children }) => {
 export default PageWrapper;
 
 const StyledPageWrapper = styled.div`
+  flex: 3;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  background: #48a14d;
-  height: 100vh;
-  width: 100vw;
-  box-sizing: border-box;
-
-  a {
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    &:hover {
-      color: #ccc;
-      transition: ease-in-out 0.2s all;
-    }
-  }
+  color: #212121;
 `;

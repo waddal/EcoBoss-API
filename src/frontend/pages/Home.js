@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import PageWrapper from '../components/PageWrapper';
 
 const Home = () => {
   return (
-    <StyledHome>
+    <PageWrapper>
       <h1>Try it out:</h1>
       <SearchContainer>
         <section>
@@ -12,20 +13,11 @@ const Home = () => {
         </section>
         <div id="submit">Submit</div>
       </SearchContainer>
-    </StyledHome>
+    </PageWrapper>
   );
 };
 
 export default Home;
-
-const StyledHome = styled.div`
-  flex: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: #212121;
-`;
 
 const SearchContainer = styled.div`
   display: flex;

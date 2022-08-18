@@ -1,22 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import PageWrapper from '../components/PageWrapper';
+
 const About = () => {
   return (
-    <StyledAbout>
+    <PageWrapper>
       <h1>About page</h1>
-    </StyledAbout>
+    </PageWrapper>
   );
 };
 
 export default About;
-
-const StyledAbout = styled.div`
-  flex: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #ccc;
-  color: #212121;
-`;
