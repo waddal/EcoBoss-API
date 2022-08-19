@@ -16,15 +16,21 @@ exports.up = async function (knex) {
       table.integer('effectiveness').notNullable();
       table.string('requirements');
       table.string('link');
+      table.bool('is_approved').defaultTo(false);
       table
         .integer('boss_id')
         .references('boss_id')
         .inTable('bosses')
         .onUpdate('RESTRICT')
         .onDelete('RESTRICT');
-    });
+    })
+    .createTable('users', (table) => {
+      table.increments('user_id').primary();
+      table.string('username').notNullable().unique();
+      table.string('password').notNullable();
+    })
 };
 
 exports.down = async function (knex) {
-  await knex.schema.dropTableIfExists('activities').dropTableIfExists('bosses');
+  await knex.schema.dropTableIfExists('activities').dropTableIfExists('bosses').dropTableIfExists('users');
 };

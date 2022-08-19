@@ -44,26 +44,3 @@ exports.seed = function (knex) {
       return knex('bosses').insert(bosses);
     });
 };
-
-// const boss = {
-//   boss_id: uuid,
-//   title: 'Climate Change',
-//   status: 'Active',.
-//   health: 259 /* how do we find accurate health? */,
-//   location: location_id,
-//   type: [type_id],
-//   requirement: 'level/occupation required to fight',
-//   equipment: 'equipment needed to fight',
-// };
-
-// const themes = [
-//   `Biodiversity`,
-//   `Business, finance and economics`,
-//   `Climate change`,
-//   `Freshwater and water security`,
-//   `Governance, law and rights`,
-//   `Nature-based Solutions`,
-//   `Ocean and coasts`,
-//   `Protected areas and land use`,
-//   `Fight the new drug`,
-// ];

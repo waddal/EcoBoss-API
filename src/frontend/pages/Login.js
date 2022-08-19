@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 import * as yup from 'yup';
 
 import PageWrapper from '../components/PageWrapper';
 import schema from '../validation/loginSchema';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -47,16 +50,28 @@ const Login = () => {
     console.log(user, formErrors);
   }, [user]);
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('logging in with: ', user);
+    handleLogin(user);
+    // axios
+    //   .post('endpoint/here', user)
+    //   .then((res) => {
+    //     console.log(res);
+    //     // localStorage.setItem('token', res.data.token);
+    //     navigate('/admin');
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     //implement validation, user should be routed to signup if are new/unlisted
+    //     navigate('/');
+    //   });
   };
 
   return (
     <PageWrapper>
       <StyledLogin>
         <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="username">
             <input
               type="text"
