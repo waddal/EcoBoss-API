@@ -4,8 +4,9 @@ const getAllUsers = async () => {
   return await db('users');
 };
 
-const getByUsername = async (username) => {
-  return await db('users').where({ username }).first();
+const findBy = async (username) => {
+  const result = await db('users').where({ username }).first();
+  return result;
 };
 
 const create = async (credentials) => {
@@ -17,4 +18,4 @@ const remove = async (user_id) => {
   return await db('users').where({ user_id }).del();
 };
 
-module.exports = { getAllUsers, getByUsername, create, remove };
+module.exports = { getAllUsers, findBy, create, remove };

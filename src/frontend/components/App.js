@@ -17,7 +17,7 @@ const App = () => {
   const handleLogin = (user) => {
     console.log('handling login: ', user);
     setCredentials(user);
-    setTimeout(navigate('/admin'), 3000);
+    navigate('/admin');
   };
 
   return (

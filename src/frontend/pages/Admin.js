@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PageWrapper from '../components/PageWrapper';
 
 const Admin = ({ credentials }) => {
+  console.log('credentials: ', credentials);
   return (
     <Content>
       <h3>YOOOOO? Is that you {credentials.username}?</h3>

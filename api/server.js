@@ -1,6 +1,6 @@
 const express = require('express');
 // const helmet = require("helmet");
-// const cors = require("cors");
+const cors = require("cors");
 // const path = require("path");
 const dotenv = require('dotenv');
 const config_result = dotenv.config();
@@ -16,7 +16,7 @@ const server = express();
 server.use(express.json());
 // server.use(express.static(path.join(__dirname, "client/build")));
 // server.use(helmet());
-// server.use(cors({ origin: "*" }));
+server.use(cors({ origin: "*" }));
 
 server.use('/activities', activitiesRouter);
 server.use('/users', usersRouter);

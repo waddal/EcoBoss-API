@@ -47,24 +47,18 @@ const Login = ({ handleLogin }) => {
     schema.isValid(user).then((valid) => {
       setDisabled(!valid);
     });
-    console.log(user, formErrors);
   }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(user);
-    // axios
-    //   .post('endpoint/here', user)
-    //   .then((res) => {
-    //     console.log(res);
-    //     // localStorage.setItem('token', res.data.token);
-    //     navigate('/admin');
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     //implement validation, user should be routed to signup if are new/unlisted
-    //     navigate('/');
-    //   });
+    axios
+      .post(`${process.env.DEV_API_URL}users/login`, user)
+      .then((res) => {
+        handleLogin(res.data);
+      })
+      .catch((err) => {
+        navigate('/');
+      });
   };
 
   return (
