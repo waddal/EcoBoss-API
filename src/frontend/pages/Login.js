@@ -1,44 +1,55 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import * as yup from 'yup';
 
 import PageWrapper from '../components/PageWrapper';
+import schema from '../validation/loginSchema';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState({
-    credentials: {
-      username: '',
-      password: '',
-    },
+    username: '',
+    password: '',
   });
+  const [formErrors, setFormErrors] = useState({
+    username: '',
+    password: '',
+  });
+  const [disabled, setDisabled] = useState(false);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [name]: '',
+        });
+      })
+      .catch((err) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
     setUser({
       ...user,
-      credentials: {
-        ...user.credentials,
-        [e.target.name]: e.target.value,
-      },
+      [name]: value,
     });
   };
 
+  useEffect(() => {
+    schema.isValid(user).then((valid) => {
+      setDisabled(!valid);
+    });
+    console.log(user, formErrors);
+  }, [user]);
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('logging in with: ', user.credentials);
-    axios
-      .post('endpoint/here', user.credentials)
-      .then((res) => {
-        console.log(res);
-        // localStorage.setItem('token', res.data.token);
-        navigate('/dashboard');
-      })
-      .catch((err) => {
-        console.log(err);
-        //implement validation, user should be routed to signup if credentials are new/unlisted
-        navigate('/');
-      });
+    console.log('logging in with: ', user);
   };
 
   return (
@@ -53,12 +64,12 @@ const Login = () => {
               id="username"
               placeholder="username"
               onChange={handleChange}
-              value={user.credentials.username}
+              value={user.username}
               autoComplete="off"
             />
           </label>
           <div id="errorContainer">
-            {/* {error ? <span className="errorMsg">{error.username}</span> : null} */}
+            {formErrors.username ? <span id="error">{formErrors.username}</span> : null}
           </div>
           <label htmlFor="password">
             <input
@@ -67,14 +78,16 @@ const Login = () => {
               id="password"
               placeholder="password"
               onChange={handleChange}
-              value={user.credentials.password}
+              value={user.password}
               autoComplete="off"
             />
           </label>
           <div id="errorContainer">
-            {/* {error ? <span className="errorMsg">{error.username}</span> : null} */}
+            {formErrors.username ? <span id="error">{formErrors.password}</span> : null}
           </div>
-          <button id="submit">Submit</button>
+          <button id="submit" disabled={disabled}>
+            Submit
+          </button>
         </form>
       </StyledLogin>
     </PageWrapper>
@@ -85,7 +98,7 @@ export default Login;
 
 const StyledLogin = styled.div`
   position: relative;
-  height: 111px;
+  height: 123px;
   width: 222px;
   background-color: #70a148;
   border: 1px solid black;
@@ -115,7 +128,14 @@ const StyledLogin = styled.div`
   }
 
   #errorContainer {
+    display: flex;
+    align-items: flex-start;
     height: 12px;
+  }
+
+  #error {
+    font-size: 0.6rem;
+    color: red;
   }
 
   #submit {
@@ -125,15 +145,14 @@ const StyledLogin = styled.div`
     width: 70px;
     border: 1px solid #212121;
     padding: 2px 6px;
-    cursor: pointer;
     transition: ease-in-out 0.1s all;
     border-top-right-radius: 6px;
     border-bottom-left-radius: 6px;
 
     &:hover {
-      transform: translateY(-4px);
       border: 1px solid black;
       background-color: azure;
+      cursor: pointer;
     }
   }
 `;
