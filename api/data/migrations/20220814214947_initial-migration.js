@@ -5,9 +5,9 @@ exports.up = async function (knex) {
       table.string('description').notNullable();
       table.string('title').notNullable();
       table.integer('health').notNullable().unsigned();
-      table.string('location').notNullable();
-      table.string('requirement').notNullable();
-      table.string('status').notNullable();
+      table.string('location');
+      table.string('requirements');
+      table.string('status');
     })
     .createTable('activities', (table) => {
       table.increments('activity_id').primary();

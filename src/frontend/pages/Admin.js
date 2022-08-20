@@ -22,17 +22,17 @@ const Admin = ({ credentials }) => {
 
   return (
     <PageWrapper>
-      <Container>
+      <StyledAdmin>
         <Table caption="Activities" data={activities} />
         <Table caption="Suggested" data={pending} />
-      </Container>
+      </StyledAdmin>
     </PageWrapper>
   );
 };
 
 export default Admin;
 
-const Container = styled.div`
+const StyledAdmin = styled.div`
   display: flex;
   width: 100%;
   height: 100%;

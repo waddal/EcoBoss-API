@@ -11,7 +11,7 @@ const Nav = () => {
       <section>
         <a onClick={() => navigate('/about')}>About</a>
         <a href="#">Documentation</a>
-        <a onClick={() => navigate('/login')}>Contribute</a>
+        <a onClick={() => navigate('/contribute')}>Contribute</a>
       </section>
     </StyledNav>
   );

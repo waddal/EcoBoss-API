@@ -9,13 +9,13 @@ import About from '../pages/About';
 import Login from '../pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Admin from '../pages/Admin';
+import Contribution from '../pages/Contribution';
 
 const App = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState(null);
 
   const handleLogin = (user) => {
-    console.log('handling login: ', user);
     setCredentials(user);
     navigate('/admin');
   };
@@ -26,6 +26,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contribute" element={<Contribution />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/admin" element={<Admin credentials={credentials} />} />
       </Routes>
