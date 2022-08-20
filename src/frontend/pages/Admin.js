@@ -1,22 +1,40 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import PageWrapper from '../components/PageWrapper';
+import Table from '../components/Table';
 
 const Admin = ({ credentials }) => {
-  console.log('credentials: ', credentials);
+  const [activities, setActivities] = useState([]);
+  const [pending, setPending] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.DEV_API_URL}activities`)
+      .then((res) => {
+        setActivities(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <Content>
-      <h3>YOOOOO? Is that you {credentials.username}?</h3>
-    </Content>
+    <PageWrapper>
+      <Container>
+        <Table caption="Activities" data={activities} />
+        <Table caption="Suggested" data={pending} />
+      </Container>
+    </PageWrapper>
   );
 };
 
 export default Admin;
 
-const Content = styled.div`
-  flex:3;
-  height:100vh;
-  width: 100vw;
-  background-color: aqua;
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
 `;
