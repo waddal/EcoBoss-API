@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PageWrapper = ({ children }) => {
-  return <StyledPageWrapper>{children}</StyledPageWrapper>;
+const PageWrapper = ({ title, children }) => {
+  return <StyledPageWrapper><h1>{title}</h1>{children}</StyledPageWrapper>;
 };
 
 export default PageWrapper;

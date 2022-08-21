@@ -9,8 +9,7 @@ const activitySchema = yup.object().shape({
     .string()
     .required('Description is required')
     .min(6, 'Description must be descriptive'),
-  effectiveness: yup.number().optional(),
-  requirements: yup.string().optional(),
+  type: yup.array().oneOf(['Reduce', 'Reuse', 'Recycle']).optional(),
 });
 
 export default activitySchema;

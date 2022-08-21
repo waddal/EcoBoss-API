@@ -146,3 +146,47 @@ exports.seed = function (knex) {
       return knex('activities').insert(activities);
     });
 };
+
+
+
+// CHECKBOXES
+<label htmlFor="Air">
+    Air
+    <input type="checkbox" name="Air" value={formValues.boss} onChange={handleChange} />
+  </label>
+  <label htmlFor="Land">
+    Land
+    <input
+      type="checkbox"
+      name="Land"
+      value={formValues.boss}
+      onChange={handleChange}
+    />
+  </label>
+  <label htmlFor="Ocean">
+    Ocean
+    <input
+      type="checkbox"
+      name="Ocean"
+      value={formValues.boss}
+      onChange={handleChange}
+    />
+  </label>
+  <label htmlFor="Water">
+    Water
+    <input
+      type="checkbox"
+      name="Water"
+      value={formValues.boss}
+      onChange={handleChange}
+    />
+  </label>
+  <label htmlFor="Creature">
+    Creature
+    <input
+      type="checkbox"
+      name="Creature"
+      value={formValues.boss}
+      onChange={handleChange}
+    />
+</label>
