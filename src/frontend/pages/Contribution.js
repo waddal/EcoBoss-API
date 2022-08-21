@@ -64,7 +64,7 @@ const Contribution = () => {
   }, [formValues]);
 
   return (
-    <PageWrapper title={"Contribution"}>
+    <PageWrapper>
       <StyledContribution>
         <FormContainer>
           <form onSubmit={handleSubmit}>

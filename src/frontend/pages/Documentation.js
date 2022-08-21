@@ -3,17 +3,17 @@ import styled from 'styled-components';
 
 import PageWrapper from '../components/PageWrapper';
 
-const About = () => {
+const Documentation = () => {
   return (
     <PageWrapper>
-      <StyledAbout></StyledAbout>
+      <StyledDocumentation></StyledDocumentation>
     </PageWrapper>
   );
 };
 
-export default About;
+export default Documentation;
 
-const StyledAbout = styled.div`
+const StyledDocumentation = styled.div`
   width: 100%;
   height: 100%;
 `;

@@ -10,6 +10,7 @@ import Login from '../pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Admin from '../pages/Admin';
 import Contribution from '../pages/Contribution';
+import Documentation from '../pages/Documentation';
 
 const App = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/documentation" element={<Documentation />} />
         <Route path="/contribute" element={<Contribution />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/admin" element={<Admin credentials={credentials} />} />
