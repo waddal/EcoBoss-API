@@ -67,6 +67,9 @@ const Contribution = () => {
     <PageWrapper>
       <StyledContribution>
         <FormContainer>
+          <header>
+            <h1>Have a suggestion?</h1>
+          </header>
           <form onSubmit={handleSubmit}>
             <label htmlFor="activity">
               Activity:
@@ -134,13 +137,23 @@ const StyledContribution = styled.div`
 
 const FormContainer = styled.div`
   width: 80%;
-  height: 30%;
+  height: fit-content;
+  border: 1px solid #ccc;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  header {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+  }
 
   form {
     display: flex;
     flex-direction: column;
     width: 40%;
-    height: 100%;
+    border-right: 1px solid #ccc;
+    padding: 12px;
   }
 
   label {
@@ -169,6 +182,7 @@ const FormContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   height: 20%;
+  padding: 0% 10px;
 
   button {
     display: flex;

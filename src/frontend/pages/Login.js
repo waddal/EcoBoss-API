@@ -109,12 +109,12 @@ const StyledLogin = styled.div`
   position: relative;
   height: 123px;
   width: 222px;
-  background-color: #70a148;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
   border: 1px solid black;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
-  text-align: center;
-  padding-bottom: 16px;
 
   h1 {
     padding: 8px;
@@ -159,6 +159,7 @@ const StyledLogin = styled.div`
     border-bottom-left-radius: 6px;
 
     &:hover {
+      transform: translateY(-2px);
       border: 1px solid black;
       background-color: azure;
       cursor: pointer;

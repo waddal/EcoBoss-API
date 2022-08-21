@@ -40,6 +40,7 @@ const StyledTable = styled.table`
   border: 1px solid black;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
   margin: 18px;
 
   caption {
