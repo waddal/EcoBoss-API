@@ -8,7 +8,7 @@ const Nav = () => {
 
   return (
     <StyledNav>
-      <a onClick={() => navigate('/')}>World Boss API</a>
+      <a onClick={() => navigate('/')}>EcoBoss API</a>
       <section>
         <a onClick={() => navigate('/about')} className={pathname === '/about' ? 'active' : ''}>
           About

@@ -23,7 +23,7 @@ server.use('/users', usersRouter);
 
 // Catch
 server.get('*', (req, res) => {
-  res.json({ message: `Hi, you've reached the WorldBoss-API!` });
+  res.json({ message: `Hi, you've reached the EcoBoss-API!` });
   // res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 

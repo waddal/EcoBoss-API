@@ -14,5 +14,4 @@ const StyledPageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   color: #212121;
-  overflow: hidden;
 `;

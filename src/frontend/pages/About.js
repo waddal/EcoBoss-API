@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PageWrapper from '../components/PageWrapper';
-
 const About = () => {
   return (
-    <PageWrapper>
+    <Wrapper>
       <StyledAbout>
         <header></header>
         <section>
@@ -15,11 +13,21 @@ const About = () => {
           <div className="bossBox">water</div>
         </section>
       </StyledAbout>
-    </PageWrapper>
+    </Wrapper>
   );
 };
 
 export default About;
+
+const Wrapper = styled.div`
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #212121;
+  overflow: hidden;
+`;
 
 const StyledAbout = styled.div`
   display: flex;

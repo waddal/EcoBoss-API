@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import ActivityForm from '../components/ActivityForm';
 
-import PageWrapper from '../components/PageWrapper';
 import Table from '../components/Table';
 
 const Admin = ({ credentials }) => {
@@ -21,12 +21,11 @@ const Admin = ({ credentials }) => {
   }, []);
 
   return (
-    <PageWrapper>
-      <StyledAdmin>
-        <Table caption="Activities" data={activities} />
-        <Table caption="Suggested" data={pending} />
-      </StyledAdmin>
-    </PageWrapper>
+    <StyledAdmin>
+      <Table caption="Activities" data={activities} />
+      <Table caption="Suggested" data={pending} />
+      <ActivityForm />
+    </StyledAdmin>
   );
 };
 
@@ -34,6 +33,7 @@ export default Admin;
 
 const StyledAdmin = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow: scroll;

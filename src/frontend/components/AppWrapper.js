@@ -23,8 +23,8 @@ const StyledAppWrapper = styled.div`
     margin: 10px;
     cursor: pointer;
     &:hover {
-      color: #ccc;
       transition: ease-in-out 0.2s all;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
   }
 `;

@@ -8,7 +8,7 @@ const Home = () => {
       <h1>Try it out:</h1>
       <SearchContainer>
         <section>
-          <span>https://www.worldbossapi.com/</span>
+          <span>https://www.ecobossapi.com/</span>
           <input type="text" placeholder="activity" />
         </section>
         <div id="submit">Submit</div>
