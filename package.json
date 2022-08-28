@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "server": "nodemon index.js",
+    "server": "nodemon src/backend/index.js",
     "knex": "npx knex --knexfile config/knexfile.js",
     "migrate:dev": "npx knex --knexfile config/knexfile.js migrate:latest",
     "rollback:dev": "npx knex --knexfile config/knexfile.js migrate:rollback",
