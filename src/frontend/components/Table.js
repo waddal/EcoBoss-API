@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Table = ({ caption = 'Caption', data }) => {
+const Table = ({ caption = 'Caption', data, handleActive }) => {
   return (
     <StyledTable>
       <caption>{caption}</caption>
@@ -9,14 +9,23 @@ const Table = ({ caption = 'Caption', data }) => {
         <tr>
           <th scope="col">Activity</th>
           <th scope="col">Description</th>
+          <th scope="col">Theme</th>
+          <th scope="col">Boss</th>
         </tr>
       </thead>
       <tbody>
         {data.map((activity, index) => {
           return (
-            <tr key={index}>
+            <tr
+              key={index}
+              onClick={() => {
+                handleActive(activity.activity_id);
+              }}
+            >
               <td>{activity.activity}</td>
               <td>{activity.description}</td>
+              <td>{activity.title}</td>
+              <td>{activity.type}</td>
             </tr>
           );
         })}
@@ -36,12 +45,14 @@ const Table = ({ caption = 'Caption', data }) => {
 export default Table;
 
 const StyledTable = styled.table`
+  width: 50%;
+  height: 80%;
   padding: 20px;
   border: 1px solid black;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
   background-color: rgba(255, 255, 255, 0.1);
-  margin: 18px;
+  overflow: scroll;
 
   caption {
     text-align: left;

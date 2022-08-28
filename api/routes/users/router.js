@@ -33,9 +33,7 @@ router.post('/register', (req, res, next) => {
 
   Users.create(user)
     .then(() => {
-      res
-        .status(201)
-        .json({ message: `Added user: '${user.username}', Hashword: ${user.password}` });
+      res.status(201).json({ message: `Added user: '${user.username}'` });
     })
     .catch((err) => {
       res.status(404).json({ message: 'Woops', error: err });

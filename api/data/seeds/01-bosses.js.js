@@ -1,39 +1,27 @@
 const bosses = [
   {
-    title: 'Land',
+    type: 'Land',
     description: 'rocky',
     status: 'Active',
-    health: 359,
-    location: 'Region_id',
-    requirement:
-      'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
+    health: 2147483647,
   },
   {
-    title: 'Water',
+    type: 'Water',
     description: 'wet',
     status: 'Active',
-    health: 851,
-    location: 'Region_id',
-    requirement:
-      'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
+    health: 2147483647,
   },
   {
-    title: 'Ocean',
+    type: 'Ocean',
     description: 'salty',
     status: 'Active',
-    health: 407,
-    location: 'Region_id',
-    requirement:
-      'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
+    health: 2147483647,
   },
   {
-    title: 'Climate',
+    type: 'Air',
     description: 'whoosh',
     status: 'Active',
-    health: 843,
-    location: 'Region_id',
-    requirement:
-      'min requirement to fight. required items/skillset for optimal effectiveness against this boss',
+    health: 2147483647,
   },
 ];
 
