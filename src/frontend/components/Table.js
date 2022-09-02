@@ -45,7 +45,7 @@ const Table = ({ caption = 'Caption', data, handleActive }) => {
 export default Table;
 
 const StyledTable = styled.table`
-  width: 50%;
+  width: 400px;
   height: 80%;
   padding: 20px;
   border: 1px solid black;
@@ -71,6 +71,6 @@ const StyledTable = styled.table`
   td {
     min-width: 200px;
     max-width: 500px;
-    overflow: scroll;
+    overflow: hidden;
   }
 `;

@@ -26,7 +26,6 @@ const Admin = ({ credentials }) => {
     axios
       .get(`${process.env.DEV_API_URL}activities/all`)
       .then((res) => {
-        console.log(res.data);
         setActivities(res.data);
       })
       .catch((err) => {
@@ -36,9 +35,9 @@ const Admin = ({ credentials }) => {
 
   return (
     <StyledAdmin>
+      <ActivityForm active={active} />
       <Table caption="Activities" data={activities} handleActive={handleActive} />
       {/* <Table caption="Pending Approval" data={pending} /> */}
-      <ActivityForm active={active} />
     </StyledAdmin>
   );
 };
@@ -50,7 +49,6 @@ const StyledAdmin = styled.div`
   width: 100%;
   height: 100%;
   overflow: scroll;
-  padding: 20px;
   box-sizing: border-box;
   position: relative;
   border: 1px solid black;

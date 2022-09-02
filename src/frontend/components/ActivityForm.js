@@ -8,8 +8,8 @@ import schema from '../validation/activitySchema';
 const initialFormValues = {
   activity: '',
   description: '',
-  theme: null,
-  boss: null,
+  theme: '',
+  boss: '',
   requirements: '',
   effectiveness: 0,
   isApproved: false,
@@ -24,18 +24,18 @@ const initialFormErrors = {
   isApproved: '',
 };
 
-const ActivityForm = () => {
+const ActivityForm = ({ active }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name, value);
+    const { name, value, type, checked } = e.target;
+    const valueToUse = type === 'checkbox' ? checked : value;
 
     yup
       .reach(schema, name)
-      .validate(value)
+      .validate(valueToUse)
       .then(() => {
         setFormErrors({
           ...formErrors,
@@ -50,7 +50,21 @@ const ActivityForm = () => {
       });
     setFormValues({
       ...formValues,
-      [name]: value,
+      [name]: valueToUse,
+    });
+  };
+
+  const handleUpdateActive = () => {
+    if (active === undefined) return;
+    setFormValues({
+      ...formValues,
+      activity: active.activity,
+      description: active.description,
+      theme: active.theme_id === null ? '' : active.theme_id,
+      boss: active.boss_id === null ? '' : active.boss_id,
+      requirements: active.requirements,
+      effectiveness: active.effectiveness,
+      isApproved: active.is_approved,
     });
   };
 
@@ -62,7 +76,7 @@ const ActivityForm = () => {
       boss_id: formValues.boss,
       requirements: formValues.requirements,
       effectiveness: formValues.effectiveness,
-      is_approved: formValues.approved,
+      is_approved: formValues.is_approved,
     };
     e.preventDefault();
     axios
@@ -76,7 +90,6 @@ const ActivityForm = () => {
   };
 
   const handleReset = (e) => {
-    console.log('resetting');
     e.preventDefault();
     setFormValues(initialFormValues);
   };
@@ -87,19 +100,9 @@ const ActivityForm = () => {
     });
   }, [formValues]);
 
-  // useEffect(() => {
-  //   const { activity, description, theme_id, boss_id, requirements, effectiveness, isApproved } =
-  //     active;
-  //   setFormValues({
-  //     activity: activity,
-  //     description: description,
-  //     theme: theme_id,
-  //     boss: boss_id,
-  //     requirements: requirements,
-  //     effectiveness: effectiveness,
-  //     isApproved: isApproved,
-  //   });
-  // }, [active]);
+  useEffect(() => {
+    handleUpdateActive();
+  }, [active]);
 
   return (
     <StyledActivityForm>
@@ -153,8 +156,8 @@ const ActivityForm = () => {
 
           <label htmlFor="theme">
             Theme:
-            <select type="dropdown" name="theme" onChange={handleChange} defaultValue={'---'}>
-              <option value={null} disabled>
+            <select type="dropdown" name="theme" value={formValues.theme} onChange={handleChange}>
+              <option value={''} disabled>
                 ---
               </option>
               <option value={0}>Biodiversity</option>
@@ -170,8 +173,8 @@ const ActivityForm = () => {
 
           <label htmlFor="boss">
             Boss:
-            <select type="dropdown" name="boss" onChange={handleChange} defaultValue={'---'}>
-              <option value={null} disabled>
+            <select type="dropdown" name="boss" value={formValues.boss} onChange={handleChange}>
+              <option value={''} disabled>
                 ---
               </option>
               <option value={0}>Air</option>
@@ -181,9 +184,14 @@ const ActivityForm = () => {
             </select>
           </label>
 
-          <label htmlFor="approved" className="checkbox">
+          <label htmlFor="isApproved" className="checkbox">
             Approved:
-            <input type="checkbox" name="approved" onChange={handleChange} />
+            <input
+              type="checkbox"
+              name="isApproved"
+              checked={formValues.isApproved}
+              onChange={handleChange}
+            />
           </label>
           <ButtonContainer>
             <button onClick={handleReset}>Reset</button>
@@ -208,7 +216,7 @@ const StyledActivityForm = styled.div`
   height: 100%;
   position: sticky;
   top: 0;
-  margin-left: 16px;
+  margin: 0% 2%;
 
   h2 {
     text-align: left;
