@@ -3,7 +3,7 @@ const router = express.Router();
 const Activities = require('./model');
 const { checkActivityExists } = require('../middleware/activitiesMiddleware');
 
-router.get('/', (req, res, next) => {
+router.get('/random', (req, res, next) => {
   Activities.getActivity()
     .then((activity) => {
       res.status(200).json(activity);
@@ -13,8 +13,17 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/all', (req, res, next) => {
+  Activities.getActivities()
+    .then((activities) => {
+      res.status(200).json(activities);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 router.get('/:activity_id', (req, res, next) => {
-  console.log('get by id');
   Activities.getById(req.params.activity_id)
     .then((activity) => {
       res.status(200).json(activity);

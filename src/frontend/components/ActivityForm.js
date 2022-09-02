@@ -24,9 +24,8 @@ const initialFormErrors = {
   isApproved: '',
 };
 
-const ActivityForm = ({ active = initialFormValues }) => {
+const ActivityForm = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
-  console.log('formValues: ', formValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(false);
 

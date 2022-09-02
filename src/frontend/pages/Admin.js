@@ -24,7 +24,7 @@ const Admin = ({ credentials }) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.DEV_API_URL}activities`)
+      .get(`${process.env.DEV_API_URL}activities/all`)
       .then((res) => {
         console.log(res.data);
         setActivities(res.data);
