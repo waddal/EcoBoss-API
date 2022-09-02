@@ -10,7 +10,7 @@ const activitySchema = yup.object().shape({
   boss: yup.number().required('Boss is required').oneOf([0, 1, 2, 3]),
   requirements: yup.string().optional(),
   effectiveness: yup.number().optional(),
-  isApproved: yup.boolean().optional(),
+  is_approved: yup.boolean().optional(),
 });
 
 export default activitySchema;

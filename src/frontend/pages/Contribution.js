@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import * as yup from 'yup';
 
-import schema from '../validation/activitySchema';
+import schema from '../validation/contributionSchema';
 
 import PageWrapper from '../components/PageWrapper';
 
 const initialFormValues = {
   activity: '',
   description: '',
-  type: [],
 };
 const initialFormErrors = {
   activity: '',
   description: '',
-  type: '',
 };
 
 const Contribution = () => {
@@ -24,7 +23,6 @@ const Contribution = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     yup
       .reach(schema, name)
@@ -49,7 +47,14 @@ const Contribution = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitting: ', formValues);
+    axios
+      .post(`${process.env.DEV_API_URL}activities/`, formValues)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleReset = (e) => {
@@ -92,24 +97,6 @@ const Contribution = () => {
                 onChange={handleChange}
                 autoComplete="off"
               />
-            </label>
-
-            <label htmlFor="Type">
-              Type:
-              <section>
-                <label htmlFor="Reduce">
-                  Reduce
-                  <input type="checkbox" name="type" value="Reduce" onChange={handleChange} />
-                </label>
-                <label htmlFor="Reuse">
-                  Reuse
-                  <input type="checkbox" name="type" value="Reuse" onChange={handleChange} />
-                </label>
-                <label htmlFor="Recycle">
-                  Recycle
-                  <input type="checkbox" name="type" value="Recycle" onChange={handleChange} />
-                </label>
-              </section>
             </label>
             <ButtonContainer>
               <button onClick={handleReset}>Reset</button>

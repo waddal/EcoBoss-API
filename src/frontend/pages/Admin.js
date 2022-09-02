@@ -8,13 +8,11 @@ import Table from '../components/Table';
 const Admin = ({ credentials }) => {
   const [activities, setActivities] = useState([]);
   const [active, setActive] = useState();
-  // const [pending, setPending] = useState([]);
 
   const handleActive = (activity_id) => {
     axios
       .get(`${process.env.DEV_API_URL}activities/${activity_id}`)
       .then((res) => {
-        console.log('handle active axios: ', res.data);
         setActive(res.data);
       })
       .catch((err) => {
@@ -37,7 +35,6 @@ const Admin = ({ credentials }) => {
     <StyledAdmin>
       <ActivityForm active={active} />
       <Table caption="Activities" data={activities} handleActive={handleActive} />
-      {/* <Table caption="Pending Approval" data={pending} /> */}
     </StyledAdmin>
   );
 };

@@ -12,7 +12,7 @@ const initialFormValues = {
   boss: '',
   requirements: '',
   effectiveness: 0,
-  isApproved: false,
+  is_approved: false,
 };
 const initialFormErrors = {
   activity: '',
@@ -21,7 +21,7 @@ const initialFormErrors = {
   boss: '',
   requirements: '',
   effectiveness: '',
-  isApproved: '',
+  is_approved: '',
 };
 
 const ActivityForm = ({ active }) => {
@@ -64,10 +64,10 @@ const ActivityForm = ({ active }) => {
       boss: active.boss_id === null ? '' : active.boss_id,
       requirements: active.requirements,
       effectiveness: active.effectiveness,
-      isApproved: active.is_approved,
+      is_approved: active.is_approved,
     });
   };
-
+  console.log(formValues.is_approved);
   const handleSubmit = (e) => {
     const formBody = {
       activity: formValues.activity,
@@ -78,6 +78,7 @@ const ActivityForm = ({ active }) => {
       effectiveness: formValues.effectiveness,
       is_approved: formValues.is_approved,
     };
+    console.log('formBODYYY', formBody);
     e.preventDefault();
     axios
       .post(`${process.env.DEV_API_URL}activities`, formBody)
@@ -184,12 +185,12 @@ const ActivityForm = ({ active }) => {
             </select>
           </label>
 
-          <label htmlFor="isApproved" className="checkbox">
+          <label htmlFor="is_approved" className="checkbox">
             Approved:
             <input
               type="checkbox"
-              name="isApproved"
-              checked={formValues.isApproved}
+              name="is_approved"
+              checked={formValues.is_approved}
               onChange={handleChange}
             />
           </label>
@@ -200,10 +201,12 @@ const ActivityForm = ({ active }) => {
             </button>
           </ButtonContainer>
         </form>
-        <h4>{formErrors.activity}</h4>
-        <h4>{formErrors.description}</h4>
-        <h4>{formErrors.theme}</h4>
-        <h4>{formErrors.boss}</h4>
+        <section>
+          <h4>{formErrors.activity}</h4>
+          <h4>{formErrors.description}</h4>
+          <h4>{formErrors.theme}</h4>
+          <h4>{formErrors.boss}</h4>
+        </section>
       </FormContainer>
     </StyledActivityForm>
   );
