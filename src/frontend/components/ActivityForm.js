@@ -67,7 +67,7 @@ const ActivityForm = ({ active }) => {
       is_approved: active.is_approved,
     });
   };
-  console.log(formValues.is_approved);
+
   const handleSubmit = (e) => {
     const formBody = {
       activity: formValues.activity,
@@ -78,10 +78,20 @@ const ActivityForm = ({ active }) => {
       effectiveness: formValues.effectiveness,
       is_approved: formValues.is_approved,
     };
-    console.log('formBODYYY', formBody);
     e.preventDefault();
+    //POST REQUEST
+    // axios
+    //   .post(`${process.env.DEV_API_URL}activities`, formBody)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    //PUT REQUEST
     axios
-      .post(`${process.env.DEV_API_URL}activities`, formBody)
+      .put(`${process.env.DEV_API_URL}activities/${active.activity_id}`, formBody)
       .then((res) => {
         console.log(res);
       })
