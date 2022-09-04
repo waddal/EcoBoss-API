@@ -5,7 +5,17 @@ const About = () => {
   return (
     <Wrapper>
       <StyledAbout>
-        <header></header>
+        <header>
+          <p>Welcome to the EcoBoss API!</p>
+          <p>
+            With the endpoints available to you, a slew of simple activities for sustainable living
+            are a request away!
+          </p>
+          <p>
+            Ever felt like you want to do something to help the planet - in spite of how futile any
+            efforts may seem? WHEL. 
+          </p>
+        </header>
         <section>
           <div className="bossBox">air</div>
           <div className="bossBox">land</div>
@@ -32,6 +42,7 @@ const Wrapper = styled.div`
 const StyledAbout = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-around;
   flex-direction: column;
   width: 100%;
   padding: 4% 1%;
@@ -48,8 +59,8 @@ const StyledAbout = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 60%;
-    height: 36%;
+    width: auto;
+    min-height: 164px;
     border: 1px solid;
     border-top-right-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -62,6 +73,7 @@ const StyledAbout = styled.div`
     justify-content: center;
     width: 100px;
     height: 100px;
+    margin: 25px;
     background-color: rgba(255, 255, 255, 0.1);
 
     cursor: pointer;

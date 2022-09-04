@@ -12,6 +12,7 @@ const Home = () => {
     title: null,
     type: null,
     requirements: '',
+    link: '',
   });
 
   const handleChange = (e) => {
@@ -22,7 +23,6 @@ const Home = () => {
     axios
       .get(`${process.env.DEV_API_URL}${searchValue}`)
       .then((res) => {
-        console.log('hello?', res.data);
         setResponse(res.data);
       })
       .catch((err) => {
@@ -49,11 +49,23 @@ const Home = () => {
         </div>
       </SearchContainer>
       <ResponseContainer>
-        <p><span>Activity:</span> {response.activity}</p>
-        <p><span>Description:</span> {response.description}</p>
-        <p><span>Theme:</span> {response.title}</p>
-        <p><span>Boss:</span> {response.type}</p>
-        <p><span>Link:</span> {response.link}</p>
+        <p>
+          <span>Activity:</span> {response.activity}
+        </p>
+        <p>
+          <span>Description:</span> {response.description}
+        </p>
+        <p>
+          <span>Theme:</span> {response.title}
+        </p>
+        <p>
+          <span>Boss:</span> {response.type}
+        </p>
+        {response.link && (
+          <p>
+            <span>Link:</span> {response.link}
+          </p>
+        )}
       </ResponseContainer>
     </PageWrapper>
   );

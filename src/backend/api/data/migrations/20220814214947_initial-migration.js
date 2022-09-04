@@ -20,12 +20,18 @@ exports.up = async function (knex) {
       table.string('requirements');
       table.string('link');
       table.bool('is_approved').defaultTo(false);
-      table.integer('boss_id').references('boss_id').inTable('bosses');
-      // .onUpdate('CASCADE')
-      // .onDelete('CASCADE');
-      table.integer('theme_id').references('theme_id').inTable('themes');
-      // .onUpdate('CASCADE')
-      // .onDelete('CASCADE');
+      table
+        .integer('boss_id')
+        .references('boss_id')
+        .inTable('bosses')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+      table
+        .integer('theme_id')
+        .references('theme_id')
+        .inTable('themes')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
     .createTable('users', (table) => {
       table.increments('user_id').primary();
