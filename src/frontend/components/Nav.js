@@ -14,8 +14,8 @@ const Nav = () => {
           About
         </a>
         <a
-          onClick={() => navigate('/documentation')}
-          className={pathname === '/documentation' ? 'active' : ''}
+          onClick={() => navigate('/docs')}
+          className={pathname === '/docs' ? 'active' : ''}
         >
           Documentation
         </a>
@@ -39,7 +39,17 @@ const StyledNav = styled.div`
   justify-content: space-between;
 
   a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
     border: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+      transition: ease-in-out 0.2s all;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
   }
 
   .active {

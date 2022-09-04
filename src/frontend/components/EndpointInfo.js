@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const EndpointInfo = ({ method, query, description, response }) => {
+const EndpointInfo = ({ id, method, query, description, response }) => {
   return (
     <EndpointContainer>
+      <a id={id} />
       <Path>
         <Method>{method}</Method>
         <Query>{query}</Query>

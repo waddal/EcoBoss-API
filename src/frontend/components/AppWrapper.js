@@ -15,17 +15,4 @@ const StyledAppWrapper = styled.div`
   width: 100vw;
   box-sizing: border-box;
   overflow: hidden;
-
-  a {
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    &:hover {
-      transition: ease-in-out 0.2s all;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-  }
 `;

@@ -21,8 +21,8 @@ const responses = {
   requirements: 'Shoes, time, water, thirst for adventure',
   effectiveness: 1.2,
   is_approved: true,
-}`
-}
+}`,
+};
 
 const Documentation = () => {
   return (
@@ -30,9 +30,21 @@ const Documentation = () => {
       <nav>
         <h3>Activities</h3>
         <ul>
-          <li>uhhh</li>
-          <li>sooo...</li>
-          <li>heres a list</li>
+          <li>
+            <a href="#endpoint-random">Random</a>
+          </li>
+          <li>
+            <a href="#endpoint-id">Id</a>
+          </li>
+          <li>
+            <a href="#endpoint-theme">Theme</a>
+          </li>
+          <li>
+            <a href="#endpoint-boss">Boss</a>
+          </li>
+          {/* <li><a href="#endpoint-requirement">Requirement</a></li> */}
+          {/* <li><a href="#endpoint-accessability">Accessability</a></li> */}
+          {/* <li><a href="#endpoint-price">Price</a></li> */}
         </ul>
       </nav>
       <DocsContainer>
@@ -47,15 +59,34 @@ const Documentation = () => {
         </header>
         <section>
           <EndpointInfo
+            id="endpoint-random"
             method={'GET'}
             query={'/activities/random'}
             description={'Get a random activity'}
             response={responses.getRandom}
           />
+
           <EndpointInfo
+            id="endpoint-id"
             method={'GET'}
             query={'/activities/:id'}
             description={'Get an activity by activity_id'}
+            response={responses.getById}
+          />
+
+          <EndpointInfo
+            id="endpoint-theme"
+            method={'GET'}
+            query={'/activities/:theme'}
+            description={'Get an activity filtered by theme'}
+            response={responses.getById}
+          />
+
+          <EndpointInfo
+            id="endpoint-boss"
+            method={'GET'}
+            query={'/activities/:boss'}
+            description={'Get an activity filtered by boss'}
             response={responses.getById}
           />
         </section>
@@ -73,6 +104,10 @@ const StyledDocumentation = styled.div`
   overflow: scroll;
   position: relative;
 
+  h1 {
+    color: #ededed;
+  }
+
   nav {
     width: 18%;
     height: 200px;
@@ -86,6 +121,11 @@ const StyledDocumentation = styled.div`
 
   ul {
     padding-left: 22px;
+  }
+
+  a {
+    font-size: 1rem;
+    text-decoration: none;
   }
 `;
 
@@ -111,4 +151,3 @@ const DocsContainer = styled.div`
     margin-top: 20px;
   }
 `;
-
