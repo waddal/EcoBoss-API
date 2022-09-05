@@ -24,8 +24,8 @@ const Table = ({ caption = 'Caption', data, handleActive }) => {
             >
               <td>{activity.activity}</td>
               <td>{activity.description}</td>
-              <td>{activity.title}</td>
-              <td>{activity.type}</td>
+              <td>{activity.boss_id}</td>
+              <td>{activity.theme_id}</td>
             </tr>
           );
         })}

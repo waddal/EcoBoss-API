@@ -7,6 +7,7 @@ const getActivity = async () => {
     .join('bosses as b', 'b.boss_id', '=', 'a.boss_id')
     .join('themes as t', 't.theme_id', '=', 'a.theme_id')
     .orderByRaw('RANDOM()')
+    .where('is_approved', '=', true)
     .first();
 };
 

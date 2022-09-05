@@ -15,7 +15,7 @@ router.get('/random', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   // filter data by boss & theme id
-  const { boss_id, theme_id } = req.query;
+  const { boss_id, theme_id, is_approved } = req.query;
 
   Activities.getActivities()
     .then((activity) => {
@@ -27,6 +27,10 @@ router.get('/', (req, res, next) => {
       // /activities?theme_id=[0-7]
       if (theme_id) {
         response = response.filter((item) => item.theme_id === parseInt(theme_id));
+      }
+      // /activities?is_approved=true
+      if (is_approved) {
+        response = response.filter((item) => item.is_approved === (is_approved === 'true'));
       }
       res.status(200).json(response);
     })
