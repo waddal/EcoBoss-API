@@ -22,7 +22,7 @@ const Admin = ({ credentials }) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.DEV_API_URL}activities/all`)
+      .get(`${process.env.DEV_API_URL}activities`)
       .then((res) => {
         setActivities(res.data);
       })

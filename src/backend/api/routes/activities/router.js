@@ -13,15 +13,37 @@ router.get('/random', (req, res, next) => {
     });
 });
 
-router.get('/all', (req, res, next) => {
+router.get('/', (req, res, next) => {
+  // filter data by boss & theme id
+  const { boss_id, theme_id } = req.query;
+
   Activities.getActivities()
-    .then((activities) => {
-      res.status(200).json(activities);
+    .then((activity) => {
+      let response = [...activity];
+      // /activities?boss_id=[0-3]
+      if (boss_id) {
+        response = response.filter((item) => item.boss_id === parseInt(boss_id));
+      }
+      // /activities?theme_id=[0-7]
+      if (theme_id) {
+        response = response.filter((item) => item.theme_id === parseInt(theme_id));
+      }
+      res.status(200).json(response);
     })
     .catch((err) => {
       next(err);
     });
 });
+
+// router.get('/all', (req, res, next) => {
+//   Activities.getActivities()
+//     .then((activities) => {
+//       res.status(200).json(activities);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 router.get('/:activity_id', (req, res, next) => {
   Activities.getById(req.params.activity_id)

@@ -10,10 +10,6 @@ const getActivity = async () => {
     .first();
 };
 
-// const getActivity = async () => {
-//   return await db('activities').orderByRaw('RANDOM()').first();
-// };
-
 const getActivities = async () => {
   return await db('activities');
 };
