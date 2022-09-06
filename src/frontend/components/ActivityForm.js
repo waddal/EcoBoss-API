@@ -27,6 +27,7 @@ const initialFormErrors = {
 const ActivityForm = ({ active }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [deleteModule, setDeleteModule] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
   const handleChange = (e) => {
@@ -79,17 +80,6 @@ const ActivityForm = ({ active }) => {
       is_approved: formValues.is_approved,
     };
     e.preventDefault();
-    //POST REQUEST
-    // axios
-    //   .post(`${process.env.DEV_API_URL}activities`, formBody)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-
-    //PUT REQUEST
     axios
       .put(`${process.env.DEV_API_URL}activities/${active.activity_id}`, formBody)
       .then((res) => {
@@ -103,6 +93,25 @@ const ActivityForm = ({ active }) => {
   const handleReset = (e) => {
     e.preventDefault();
     setFormValues(initialFormValues);
+  };
+
+  const toggleDeleteModule = (e) => {
+    e.preventDefault();
+    setDeleteModule(!deleteModule);
+  };
+
+  const handleDeleteActivity = (e) => {
+    e.preventDefault();
+    axios
+      .delete(`${process.env.DEV_API_URL}activities/${active.activity_id}`)
+      .then((res) => {
+        console.log(res);
+        handleReset(e);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    setDeleteModule(false);
   };
 
   useEffect(() => {
@@ -204,6 +213,7 @@ const ActivityForm = ({ active }) => {
               onChange={handleChange}
             />
           </label>
+
           <ButtonContainer>
             <button onClick={handleReset}>Reset</button>
             <button onClick={handleSubmit} disabled={disabled}>
@@ -211,6 +221,15 @@ const ActivityForm = ({ active }) => {
             </button>
           </ButtonContainer>
         </form>
+
+        <DeleteButton onClick={toggleDeleteModule}>Delete</DeleteButton>
+        {deleteModule && (
+          <DeleteModule>
+            <button onClick={handleDeleteActivity}>Yes</button>
+            <button onClick={toggleDeleteModule}>No</button>
+          </DeleteModule>
+        )}
+
         <section>
           <h4>{formErrors.activity}</h4>
           <h4>{formErrors.description}</h4>
@@ -308,5 +327,26 @@ const ButtonContainer = styled.div`
       margin-left: 10px;
     }
     box-sizing: border-box;
+  }
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  top: 4px;
+  right: 16px;
+  padding: 0% 2px;
+  cursor: pointer;
+`;
+
+const DeleteModule = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 60px;
+  position: absolute;
+  top: 4px;
+  right: 76px;
+
+  button {
+    cursor: pointer;
   }
 `;
