@@ -9,6 +9,7 @@ if (process.env.NODE_ENV != 'production' && config_result.error) {
 }
 
 const activitiesRouter = require('./routes/activities/router');
+const bossesRouter = require('./routes/bosses/router');
 const usersRouter = require('./routes/users/router');
 
 const server = express();
@@ -19,6 +20,7 @@ server.use(express.json());
 server.use(cors({ origin: '*' }));
 
 server.use('/activities', activitiesRouter);
+server.use('/bosses', bossesRouter);
 server.use('/users', usersRouter);
 
 // Catch

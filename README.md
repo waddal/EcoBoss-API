@@ -13,7 +13,24 @@ The EcoBoss API is a source for people who want to crush unsustainable lifestyle
 
 
 ### TODO
-- Active sustainable projects table
+Activities
+- Rethink efficiency column (what good are arbitrary numbers)
+- Ponder over requirements
+
+Bosses
+- Rethink boss schema
+
+Guilds
+- structure table schema for data involving active projects in sustainabile development
+- users can join a guild? 
+- guilds can be donated to (link to a projects donation page)
+
+User
+- register/login endpoints? 
+- user can make an account?
+- user can choose activities they will engage in?
+- theres a way to keep history of completed/pending activities
+- users can join a guild?
 
 ## Sources
 https://sdgs.un.org/2030agenda 

@@ -3,24 +3,38 @@ import styled from 'styled-components';
 
 import EndpointInfo from '../components/EndpointInfo';
 
-const responses = {
+const activityResponses = {
   getRandom: `{
   activity: 'Plant a tree',
-  description: 'Nature is our ally',
-  theme_id: '5',
+  activity_id: 3,
   boss_id: '0',
-  requirements: 'A seed, water',
+  description: 'Nature is our ally',
   effectiveness: 2.3,
   is_approved: true,
+  link: 'link',
+  requirements: 'A seed, water',
+  theme_id: '5',
 }`,
   getById: `{
   activity: 'Walk there',
-  description: 'Strap on your shoes for those short commutes and reduce your carbon footprint!',
-  theme_id: '0',
+  activity_id: 2,
   boss_id: '0',
-  requirements: 'Shoes, time, water, thirst for adventure',
+  description: 'Strap on your shoes for those short commutes and reduce your carbon footprint!',
   effectiveness: 1.2,
   is_approved: true,
+  link: 'link',
+  requirements: 'Shoes, time, water, thirst for adventure',
+  theme_id: '0',
+}`,
+};
+
+const bossesResponses = {
+  all: `{
+  "boss_id": 4,
+  "description": "whoosh",
+  "health": 2147483647,
+  "status": "Active",
+  "type": "Air"
 }`,
 };
 
@@ -28,23 +42,40 @@ const Documentation = () => {
   return (
     <StyledDocumentation>
       <nav>
-        <h3>Activities</h3>
+        <h3>
+          <a href="#activities">Activities</a>
+        </h3>
         <ul>
           <li>
-            <a href="#endpoint-random">Random</a>
+            <a href="#activities-random">Random</a>
           </li>
           <li>
-            <a href="#endpoint-id">Id</a>
+            <a href="#activities-id">Id</a>
           </li>
           <li>
-            <a href="#endpoint-theme">Theme</a>
+            <a href="#activities-theme">Theme</a>
           </li>
           <li>
-            <a href="#endpoint-boss">Boss</a>
+            <a href="#activities-boss">Boss</a>
           </li>
-          {/* <li><a href="#endpoint-requirement">Requirement</a></li> */}
-          {/* <li><a href="#endpoint-accessability">Accessability</a></li> */}
-          {/* <li><a href="#endpoint-price">Price</a></li> */}
+        </ul>
+
+        <h3>
+          <a href="#bosses">Bosses</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="#bosses-all">All</a>
+          </li>
+        </ul>
+
+        <h3>
+          <a href="#guilds">Guilds</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="#guilds-all">All</a>
+          </li>
         </ul>
       </nav>
       <DocsContainer>
@@ -58,36 +89,65 @@ const Documentation = () => {
           </p>
         </header>
         <section>
+          <h2>
+            <a id="activities">Activities</a>
+          </h2>
           <EndpointInfo
-            id="endpoint-random"
+            id="activities-random"
             method={'GET'}
             query={'/activities/random'}
             description={'Get a random activity'}
-            response={responses.getRandom}
+            response={activityResponses.getRandom}
           />
 
           <EndpointInfo
-            id="endpoint-id"
+            id="activities-id"
             method={'GET'}
-            query={'/activities/:id'}
+            query={'/activities/:activity_id'}
             description={'Get an activity by activity_id'}
-            response={responses.getById}
+            response={activityResponses.getById}
           />
 
           <EndpointInfo
-            id="endpoint-theme"
+            id="activities-theme"
             method={'GET'}
-            query={'/activities/:theme'}
-            description={'Get an activity filtered by theme'}
-            response={responses.getById}
+            query={'/activities?theme_id=[0-7]'}
+            description={'Get an activity filtered by query parameter: theme_id'}
+            response={activityResponses.getById}
           />
 
           <EndpointInfo
-            id="endpoint-boss"
+            id="activities-boss"
             method={'GET'}
-            query={'/activities/:boss'}
-            description={'Get an activity filtered by boss'}
-            response={responses.getById}
+            query={'/activities?boss_id=[0-3]'}
+            description={'Get an activity filtered by query parameter: boss_id'}
+            response={activityResponses.getById}
+          />
+        </section>
+
+        <section>
+          <h2>
+            <a id="bosses">Bosses</a>
+          </h2>
+          <EndpointInfo
+            id="bosses-all"
+            method={'GET'}
+            query={'/bosses'}
+            description={'Get all boss information'}
+            response={bossesResponses.all}
+          />
+        </section>
+
+        <section>
+          <h2>
+            <a id="guilds">Guilds</a>
+          </h2>
+          <EndpointInfo
+            id="guilds-all"
+            method={'GET'}
+            query={'/guilds'}
+            description={'Get all guild information'}
+            response={bossesResponses.all}
           />
         </section>
       </DocsContainer>
@@ -145,7 +205,7 @@ const DocsContainer = styled.div`
   }
 
   section {
-    height: 100%;
+    height: fit-content;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 20px;
     margin-top: 20px;

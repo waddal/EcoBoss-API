@@ -22,7 +22,8 @@ export default EndpointInfo;
 
 const EndpointContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
-  height: 256px;
+  height: fit-content;
+  padding: 10px;
   cursor: default;
 
   p {
