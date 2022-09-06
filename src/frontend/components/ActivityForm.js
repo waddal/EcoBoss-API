@@ -27,6 +27,8 @@ const initialFormErrors = {
 const ActivityForm = ({ active }) => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [confirmationMessage, setConfirmationMessage] = useState('');
+  const [confirmationModule, setConfirmationModule] = useState(false);
   const [deleteModule, setDeleteModule] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
@@ -84,6 +86,8 @@ const ActivityForm = ({ active }) => {
       .put(`${process.env.DEV_API_URL}activities/${active.activity_id}`, formBody)
       .then((res) => {
         console.log(res);
+        toggleConfirmationModule('Activity updated!');
+        handleReset(e);
       })
       .catch((err) => {
         console.log(err);
@@ -93,6 +97,11 @@ const ActivityForm = ({ active }) => {
   const handleReset = (e) => {
     e.preventDefault();
     setFormValues(initialFormValues);
+  };
+
+  const toggleConfirmationModule = (message) => {
+    setConfirmationMessage(message);
+    setConfirmationModule(!confirmationModule);
   };
 
   const toggleDeleteModule = (e) => {
@@ -105,7 +114,7 @@ const ActivityForm = ({ active }) => {
     axios
       .delete(`${process.env.DEV_API_URL}activities/${active.activity_id}`)
       .then((res) => {
-        console.log(res);
+        toggleConfirmationModule(`Activity with id: ${active.activity_id} deleted!`);
         handleReset(e);
       })
       .catch((err) => {
@@ -123,6 +132,14 @@ const ActivityForm = ({ active }) => {
   useEffect(() => {
     handleUpdateActive();
   }, [active]);
+
+  const timedToggle = () => {
+    setConfirmationModule(false);
+  };
+
+  useEffect(() => {
+    setTimeout(timedToggle, 2000);
+  }, [confirmationModule]);
 
   return (
     <StyledActivityForm>
@@ -229,7 +246,11 @@ const ActivityForm = ({ active }) => {
             <button onClick={toggleDeleteModule}>No</button>
           </DeleteModule>
         )}
-
+        {confirmationModule && (
+          <ConfirmationModule>
+            <h5>{confirmationMessage}</h5>
+          </ConfirmationModule>
+        )}
         <section>
           <h4>{formErrors.activity}</h4>
           <h4>{formErrors.description}</h4>
@@ -348,5 +369,21 @@ const DeleteModule = styled.div`
 
   button {
     cursor: pointer;
+    padding: 0% 2px;
   }
+`;
+
+const ConfirmationModule = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  padding: 5px;
+  background-color: crimson;
+  text-align: center;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+  transition: ease-in-out linear 2s;
 `;
