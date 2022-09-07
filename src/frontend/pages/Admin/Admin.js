@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { ActivityForm, Table } from './components';
 
-const Admin = ({ credentials }) => {
+const Admin = () => {
   const [activities, setActivities] = useState([]);
   const [active, setActive] = useState();
 

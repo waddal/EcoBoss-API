@@ -28,7 +28,14 @@ const App = () => {
         <Route path="/docs" element={<Documentation />} />
         <Route path="/contribute" element={<Contribution />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-        <Route path="/admin" element={<Admin credentials={credentials} />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute credentials={credentials} redirectTo={'/login'}>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </StyledApp>
