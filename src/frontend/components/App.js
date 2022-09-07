@@ -8,7 +8,7 @@ import { Contribution } from '../pages/Contribution';
 import { Documentation } from '../pages/Documentation';
 import Footer from './Footer';
 import { Home } from '../pages/Home';
-import Login from '../pages/Login';
+import { Login } from '../pages/Login';
 import Nav from './Nav';
 // import ProtectedRoute from './ProtectedRoute';
 
