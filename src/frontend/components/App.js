@@ -5,7 +5,7 @@ import AppWrapper from './AppWrapper';
 import Nav from './Nav';
 import Footer from './Footer';
 import Home from '../pages/Home';
-import About from '../pages/About';
+import {About} from '../pages/About';
 import Login from '../pages/Login';
 // import ProtectedRoute from './ProtectedRoute';
 import { Admin } from '../pages/Admin';
