@@ -10,7 +10,7 @@ import Login from '../pages/Login';
 // import ProtectedRoute from './ProtectedRoute';
 import { Admin } from '../pages/Admin';
 import { Contribution } from '../pages/Contribution';
-import Documentation from '../pages/Documentation';
+import { Documentation } from '../pages/Documentation';
 
 const App = () => {
   const navigate = useNavigate();

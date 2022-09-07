@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import EndpointInfo from '../components/EndpointInfo';
+import { EndpointInfo } from './components';
 
 const activityResponses = {
   getRandom: `{
