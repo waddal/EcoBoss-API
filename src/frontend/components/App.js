@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { About } from '../pages/About';
 import { Admin } from '../pages/Admin';
-import AppWrapper from './AppWrapper';
 import { Contribution } from '../pages/Contribution';
 import { Documentation } from '../pages/Documentation';
-import Footer from './Footer';
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
-import Nav from './Nav';
-// import ProtectedRoute from './ProtectedRoute';
+import { Footer, Nav, ProtectedRoute } from './index';
 
 const App = () => {
   const navigate = useNavigate();
@@ -22,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <AppWrapper>
+    <StyledApp>
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,8 +31,18 @@ const App = () => {
         <Route path="/admin" element={<Admin credentials={credentials} />} />
       </Routes>
       <Footer />
-    </AppWrapper>
+    </StyledApp>
   );
 };
 
 export default App;
+
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #48a14d;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+`;

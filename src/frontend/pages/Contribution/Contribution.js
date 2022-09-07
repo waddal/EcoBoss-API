@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import * as yup from 'yup';
 
-import schema from '../../validation/contributionSchema';
+import schema from './validation/contributionSchema';
 
 import PageWrapper from '../../components/PageWrapper';
 

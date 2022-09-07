@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import * as yup from 'yup';
 
 import PageWrapper from '../../components/PageWrapper';
-import schema from '../../validation/loginSchema';
+import schema from './validation/loginSchema';
 
 const Login = ({ handleLogin }) => {
   const navigate = useNavigate();
