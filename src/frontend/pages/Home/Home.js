@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import PageWrapper from '../components/PageWrapper';
+import PageWrapper from '../../components/PageWrapper';
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState('activities/random');
