@@ -8,12 +8,11 @@ const About = () => {
         <header>
           <p>Welcome to the EcoBoss API!</p>
           <p>
-            With the endpoints available to you, a slew of simple activities for sustainable living
-            are a request away!
+            Fighting for a sustainable future, one activity at a time!
           </p>
           <p>
-            Ever felt like you want to do something to help the planet - in spite of how futile any
-            efforts may seem? WHEL. 
+            {/* Ever felt like you want to do something to help the planet - in spite of how futile any
+            efforts may seem? WHEL.  */}
           </p>
         </header>
         <section>

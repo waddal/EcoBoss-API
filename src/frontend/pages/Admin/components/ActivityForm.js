@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import * as yup from 'yup';
 
-import schema from '../validation/activitySchema';
+import schema from '../../../validation/activitySchema';
 
 const initialFormValues = {
   activity: '',

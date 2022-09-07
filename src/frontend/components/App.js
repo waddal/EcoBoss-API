@@ -7,8 +7,8 @@ import Footer from './Footer';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Login from '../pages/Login';
-import ProtectedRoute from './ProtectedRoute';
-import Admin from '../pages/Admin';
+// import ProtectedRoute from './ProtectedRoute';
+import { Admin } from '../pages/Admin';
 import Contribution from '../pages/Contribution';
 import Documentation from '../pages/Documentation';
 

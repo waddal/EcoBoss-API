@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import ActivityForm from '../components/ActivityForm';
-import Table from '../components/Table';
+import { ActivityForm, Table } from './components';
 
 const Admin = ({ credentials }) => {
   const [activities, setActivities] = useState([]);
