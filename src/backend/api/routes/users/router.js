@@ -46,7 +46,10 @@ router.post('/login', (req, res, next) => {
   Users.findBy(username)
     .then((user) => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        res.status(200).json(user);
+        console.log(req.session);
+        req.session.user = user;
+        console.log(user);
+        res.status(200).json({ message: `Welcome, ${username}` });
       } else {
         res.status(404).json({ message: 'Incorrect details' });
       }

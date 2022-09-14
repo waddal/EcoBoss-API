@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Activities = require('./model');
 const { checkActivityExists } = require('../middleware/activitiesMiddleware');
+const { restricted } = require('../middleware/authMiddleware');
 
 router.get('/random', (req, res, next) => {
   Activities.getActivity()
@@ -13,7 +14,7 @@ router.get('/random', (req, res, next) => {
     });
 });
 
-router.get('/', (req, res, next) => {
+router.get('/', restricted, (req, res, next) => {
   // filter data by boss & theme id
   const { boss_id, theme_id, is_approved } = req.query;
 

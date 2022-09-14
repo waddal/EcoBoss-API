@@ -1,6 +1,7 @@
 const express = require('express');
 // const helmet = require("helmet");
 const cors = require('cors');
+const session = require('express-session');
 // const path = require("path");
 const dotenv = require('dotenv');
 const config_result = dotenv.config();
@@ -18,6 +19,18 @@ server.use(express.json());
 // server.use(express.static(path.join(__dirname, "client/build")));
 // server.use(helmet());
 server.use(cors({ origin: '*' }));
+server.use(session({
+  name: 'monkey', // name of sessionId
+  secret: 'make it long and random', // sessionId is actually encrypted
+  cookie: {
+    maxAge: 1000 * 60 * 60, // millisecond * 60 = 1min, 1min * 60 = hour long til expiration,
+    secure: false, // in prodi t should be true, cookie should only work over https
+    httpOnly: false, // make true if possible
+  },
+  rolling: true, // if user hits db, session will extend || push back the expiration date of cookie
+  resave: false, // ignore for now
+  saveUninitialized: false, // if false, sessions will not be stored "by default"
+}))
 
 server.use('/activities', activitiesRouter);
 server.use('/bosses', bossesRouter);
